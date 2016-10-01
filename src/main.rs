@@ -1,9 +1,12 @@
 extern crate pencil;
+extern crate motivations;
+
+use motivations::MOTIVATIONS;
 
 use pencil::{Pencil, Request, Response, PencilResult};
 
 fn hello(_: &mut Request) -> PencilResult {
-    Ok(Response::from("Hello World!"))
+    Ok(Response::from(MOTIVATIONS[0]))
 }
 
 fn main() {

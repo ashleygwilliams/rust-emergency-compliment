@@ -6,3 +6,4 @@ repository = "https://github.com/ashleygwilliams/rust-emergency-compliment"
 
 [dependencies]
 pencil = { git = "https://github.com/fengsp/pencil.git" }
+motivations = "1.0.2"
