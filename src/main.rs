@@ -7,7 +7,7 @@ use std::str::FromStr;
 
 use pencil::Pencil;
 
-mod routes;
+mod templates;
 
 /// Look up our server port number in PORT, for compatibility with Heroku.
 fn get_server_port() -> u16 {
@@ -16,9 +16,11 @@ fn get_server_port() -> u16 {
 }
 
 fn main() {
-    let mut app = Pencil::new("/web/motivation");
-    app.get("/", "motivation", routes::motivation);
+    let mut app = Pencil::new("./src");
     
+    app.register_template("motivation.html");
+    app.get("/", "motivation", templates::motivation);
+
     let host = "0.0.0.0";
     let port = get_server_port();
     let address = format!("{}:{}", host, port);
