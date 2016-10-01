@@ -17,3 +17,4 @@ installed, I recommend using the (rustup)[https://www.rustup.rs/] Rust version m
 - [pencil](https://crates.io/crates/pencil/): A micro web framework for Rust, inspired by
   Python's flask.
 - [motivations](https://crates.io/crates/motivations): A collection of motivating messages
+- [pick-one]: Small utility to pick one item out of an array at random
