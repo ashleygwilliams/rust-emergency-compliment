@@ -17,8 +17,10 @@ fn get_server_port() -> u16 {
 
 fn main() {
     let mut app = Pencil::new("./src");
-    
+ 
+    app.enable_static_file_handling();   
     app.register_template("motivation.html");
+
     app.get("/", "motivation", templates::motivation);
 
     let host = "0.0.0.0";
