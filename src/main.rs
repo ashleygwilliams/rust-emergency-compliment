@@ -5,13 +5,9 @@ extern crate pick_one;
 use std::env;
 use std::str::FromStr;
 
-use motivations::MOTIVATIONS;
+use pencil::Pencil;
 
-use pencil::{Pencil, Request, Response, PencilResult};
-
-fn hello(_: &mut Request) -> PencilResult {
-    Ok(Response::from(pick_one::pick_one_str(&MOTIVATIONS)))
-}
+mod routes;
 
 /// Look up our server port number in PORT, for compatibility with Heroku.
 fn get_server_port() -> u16 {
@@ -20,8 +16,8 @@ fn get_server_port() -> u16 {
 }
 
 fn main() {
-    let mut app = Pencil::new("/web/hello");
-    app.get("/", "hello", hello);
+    let mut app = Pencil::new("/web/motivation");
+    app.get("/", "motivation", routes::motivation);
     
     let host = "0.0.0.0";
     let port = get_server_port();
