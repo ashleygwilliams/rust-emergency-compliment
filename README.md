@@ -4,7 +4,7 @@
 
 This application is written in the [Rust Programming Language](https://www.rust-lang.org/en-US/).
 Therefore to run this application you'll need Rust installed. If you do not already have Rust 
-installed, I recommend using the (rustup)[https://www.rustup.rs/] Rust version manager to install it.
+installed, I recommend using the [rustup](https://www.rustup.rs/) Rust version manager to install it.
 
 ## up and running
 
