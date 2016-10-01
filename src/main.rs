@@ -3,7 +3,6 @@ extern crate motivations;
 extern crate pick_one;
 
 use std::env;
-use std::str::FromStr;
 
 use pencil::Pencil;
 
@@ -12,7 +11,7 @@ mod templates;
 /// Look up our server port number in PORT, for compatibility with Heroku.
 fn get_server_port() -> u16 {
     let port_str = env::var("PORT").unwrap_or(String::new());
-    FromStr::from_str(&port_str).unwrap_or(7878)
+    port_str.parse().unwrap_or(7878)
 }
 
 fn main() {
