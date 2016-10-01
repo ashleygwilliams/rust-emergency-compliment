@@ -9,7 +9,7 @@ installed, I recommend using the [rustup](https://www.rustup.rs/) Rust version m
 ## up and running
 
 1. Fork and clone this repository
-2. cd `rust-oh-hai-internet`
+2. cd `rust-emergency-compliemnt`
 3. `cargo run`
 
 ## dependencies
