@@ -1,31 +1,29 @@
-extern crate pencil;
+extern crate handlebars;
 extern crate motivations;
 extern crate pick_one;
-
-use std::env;
-
-use pencil::Pencil;
+extern crate simple_server;
 
 mod templates;
 
+use std::env;
+
+use simple_server::Server;
+
 /// Look up our server port number in PORT, for compatibility with Heroku.
-fn get_server_port() -> u16 {
-    let port_str = env::var("PORT").unwrap_or(String::new());
-    port_str.parse().unwrap_or(7878)
+fn get_server_port() -> String {
+    env::var("PORT").unwrap_or("7878".to_string())
 }
 
 fn main() {
-    let mut app = Pencil::new("./src");
+    let app = Server::new(|_request, mut response| {
+        let motivation = templates::motivation();
+        Ok(response.body(motivation)?)
+    });
  
-    app.enable_static_file_handling();   
-    app.register_template("motivation.html");
-
-    app.get("/", "motivation", templates::motivation);
-
     let host = "0.0.0.0";
     let port = get_server_port();
     let address = format!("{}:{}", host, port);
 
     println!("* Running on http://{}", address);
-    app.run(&address[..]);
+    app.listen(host, &port);
 }
