@@ -17,7 +17,7 @@ fn get_server_port() -> String {
 fn main() {
     let app = Server::new(|_request, mut response| {
         let motivation = templates::motivation();
-        Ok(response.body(motivation)?)
+        Ok(response.header("Content-Type", "text/html; charset=utf-8").body(motivation)?)
     });
  
     let host = "0.0.0.0";
